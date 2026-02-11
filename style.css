@@ -101,7 +101,7 @@ body {
 .filter-box {
     position: absolute;
     right: 0;
-    top: 65px;
+    top: 85px;
     background: #ff6b5f;
     display: flex;
     gap: 20px;
