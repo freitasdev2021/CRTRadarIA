@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seleção de IA - CRT-ES</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="areas.css"/>
 </head>
 <body>
 
@@ -36,26 +37,26 @@
     </section>
 
     <section class="areas">
-        <div class="area-item"><img src="icones/CIVIL.png">Civil</div>
-        <div class="area-item"><img src="icones/ELÉTRICA.png">Elétrica</div>
-        <div class="area-item"><img src="icones/MECÂNICA.png">Mecânica</div>
-        <div class="area-item"><img src="icones/METALURGIA.png">Metalurgia</div>
-        <div class="area-item"><img src="icones/GEOLOGIA.png">Geologia</div>
-        <div class="area-item"><img src="icones/AGRIMENSURA.png">Agrimensura</div>
-        <div class="area-item"><img src="icones/ARQUITETURA.png">Arquitetura</div>
-        <div class="area-item"><img src="icones/TECNOLOGIA.png">Tecnologia</div>
-        <div class="area-item"><img src="icones/TELECOM.png">Telecomunicações</div>
-        <div class="area-item"><img src="icones/EMPREENDORISMO.png">Empreendedorismo</div>
-        <div class="area-item"><img src="icones/PRODUTIVIDADE.png">Produtividade</div>
-        <div class="area-item"><img src="icones/RADIO E TV.png">Rádio e TV</div>
-        <div class="area-item"><img src="icones/JOGOS DIGITAIS.png">Jogos Digitais</div>
+        <div class="area-item" data-area="Civil"><img src="icones/CIVIL.png">Civil</div>
+        <div class="area-item" data-area="Elétrica"><img src="icones/ELÉTRICA.png">Elétrica</div>
+        <div class="area-item" data-area="Mecânica"><img src="icones/MECÂNICA.png">Mecânica</div>
+        <div class="area-item" data-area="Metalurgia"><img src="icones/METALURGIA.png">Metalurgia</div>
+        <div class="area-item" data-area="Geologia"><img src="icones/GEOLOGIA.png">Geologia</div>
+        <div class="area-item" data-area="Agrimensura"><img src="icones/AGRIMENSURA.png">Agrimensura</div>
+        <div class="area-item" data-area="Arquitetura"><img src="icones/ARQUITETURA.png">Arquitetura</div>
+        <div class="area-item" data-area="Tecnologia"><img src="icones/TECNOLOGIA.png">Tecnologia</div>
+        <div class="area-item" data-area="Telecomunicações"><img src="icones/TELECOM.png">Telecomunicações</div>
+        <div class="area-item" data-area="Empreendedorismo"><img src="icones/EMPREENDORISMO.png">Empreendedorismo</div>
+        <div class="area-item" data-area="Produtividade"><img src="icones/PRODUTIVIDADE.png">Produtividade</div>
+        <div class="area-item" data-area="Rádio"><img src="icones/RADIO E TV.png">Rádio e TV</div>
+        <div class="area-item" data-area="Jogos"><img src="icones/JOGOS DIGITAIS.png">Jogos Digitais</div>
     </section>
 
-    <!-- <section class="search-filter">
-        <input type="text" placeholder="Buscar ferramentas de IA...">
-        <button class="btn-filter">Filtros</button>
+    <section class="search-filter">
+        <input type="text" name="Filtro" placeholder="Buscar ferramentas de IA...">
+        <!--<button class="btn-filter">Filtros</button>-->
 
-        <div class="filter-box">
+        <!-- <div class="filter-box">
             <div class="filter-col">
                 <h4>ÁREA</h4>
             </div>
@@ -64,14 +65,80 @@
             </div>
             <div class="filter-col">
                 <h4>ORÇAMENTO</h4>
-            </div>
+            </div> -->
         </div>
-    </section> -->
+    </section>
 
     <section class="results">
-        <div class="result-card"></div>
-        <div class="result-card"></div>
+        <div class="result-card">
+
+        </div>
     </section>
 </main>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="areas.js"></script>
+<script>
+    $(".area-item").on("click",function(){
+        var area = $(this).attr("data-area")
+        var areasTela = areas[area]
+        $(".result-card").html("")
+        $.each(areasTela,function(index,value){
+            var component = `
+            <div class="card">
+                <div>
+                    <div class="card-header">
+                        <div class="card-title">${value.software}</div>
+                        <div class="heart">♡</div>
+                    </div>
+                    <div class="card-description">
+                        ${value.descricao}
+                    </div>
+                    <div class="tags">
+                        <div class="tag">${area}</div>
+                        <div class="tag">${value.pagamento}</div>
+                        <div class="tag">${value.nivel}</div>
+                    </div>
+                </div>
+            </div>
+            `;
+            
+            $(".result-card").append(component)
+            
+        })
+    })
+
+    $("input[name=Filtro]").on("keyup",function(){
+        var busca = $(this).val().toLowerCase()
+
+        var todosSoftwares = Object.values(areas).flat()
+
+        var resultadoBusca = todosSoftwares.filter(item => item.software.toLowerCase() === busca)
+
+        $(".result-card").html("")
+        $.each(resultadoBusca,function(index,value){
+            var componentBusca = `
+            <div class="card">
+                <div>
+                    <div class="card-header">
+                        <div class="card-title">${value.software}</div>
+                        <div class="heart">♡</div>
+                    </div>
+                    <div class="card-description">
+                        ${value.descricao}
+                    </div>
+                    <div class="tags">
+  
+                        <div class="tag">${value.pagamento}</div>
+                        <div class="tag">${value.nivel}</div>
+                    </div>
+                </div>
+            </div>
+            `;
+
+            $(".result-card").append(componentBusca)
+        })
+    })
+
+</script>
 </body>
 </html>
