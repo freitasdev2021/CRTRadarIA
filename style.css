@@ -10,6 +10,27 @@ body {
     color: #1f2a44;
 }
 
+a{
+    text-decoration:none;
+}
+
+.lado1{
+    margin-left:70px;
+}
+
+.lado2{
+    margin-left:150px;
+}
+
+.lado3{
+    margin-left:230px;
+}
+
+.lado4{
+    margin-left:180px;
+}
+
+
 .container {
     width: 90%;
     max-width: 1200px;
@@ -58,7 +79,7 @@ body {
 .areas {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 25px;
+    gap: 36px;
     padding: 40px 0;
     text-align: center;
 }
@@ -69,6 +90,7 @@ body {
     align-items: center;
     gap: 10px;
     font-size: 0.95rem;
+    cursor:pointer;
 }
 
 /* BUSCA */
@@ -140,6 +162,10 @@ body {
 @media (max-width: 768px) {
     .hero h1 {
         font-size: 1.8rem;
+    }
+
+    .lado1,.lado2,.lado3,.lado4{
+        margin:0;
     }
 
     .filter-box {

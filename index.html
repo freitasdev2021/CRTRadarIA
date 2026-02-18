@@ -6,21 +6,47 @@
     <title>Seleção de IA - CRT-ES</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="areas.css"/>
+    <link rel="stylesheet" href="sei.css"/>
 </head>
 <body>
-
+<header class="navGeral">
+    <!--INÍCIO DOS NAVS-->
+    <!--NAV SUPERIOR-->
+    <nav class="navbar navbar-expand-lg" style="background: #03367b; border-bottom:solid white;">
+        <div class="collapse navbar-collapse navSuperior arrasta" id="navbarTogglerDemo02">
+        <!-- Lista do lado esquerdo -->
+        <ul class="mb-3 mb-lg-0">
+            <li class="nav-item">
+            <a class="nav-link" href="https://www.cft.org.br/ouvidoria/">Ouvidoria</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="https://www.crtes.gov.br/fale/">Fale com o CRT-ES</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="https://www.crtes.gov.br/perguntas/">Perguntas Frequentes</a>
+            </li>
+            <!-- <li class="nav-item">
+            <a class="nav-link" href="<?=linque('sei')?>">SEI</a>
+            </li> -->
+        </ul>
+        <!-- Lista do lado direito -->
+        <ul class="mb-3 mb-lg-0" style="margin-right:0px;">
+            <li class="nav-item">
+            <a class="nav-link" href="https://www.crtes.gov.br/mapasite/">Mapa do Site</a>
+            </li>
+        </ul>
+        </div>
+    </nav>
+    <!--FIM DOS NAVS-->
+</header>
 <header class="topbar">
     <div class="container topbar-content">
         <div class="logo-left">
-            <img src="icones/RadarIA.png" width="180px" height="100px">
+            <img src="icones/RadarIA.png" width="200px" height="120px">
         </div>
 
-        <nav class="menu">
-            <a href="#">Sobre</a>
-        </nav>
-
         <div class="logo-right">
-            <img src="icones/logoheader.png" width="200px" height="80px">
+            <img src="icones/logoheader.png" width="200px" height="100px">
         </div>
     </div>
 </header>
@@ -45,11 +71,11 @@
         <div class="area-item" data-area="Agrimensura"><img src="icones/AGRIMENSURA.png">Agrimensura</div>
         <div class="area-item" data-area="Arquitetura"><img src="icones/ARQUITETURA.png">Arquitetura</div>
         <div class="area-item" data-area="Tecnologia"><img src="icones/TECNOLOGIA.png">Tecnologia</div>
-        <div class="area-item" data-area="Telecomunicações"><img src="icones/TELECOM.png">Telecomunicações</div>
-        <div class="area-item" data-area="Empreendedorismo"><img src="icones/EMPREENDORISMO.png">Empreendedorismo</div>
-        <div class="area-item" data-area="Produtividade"><img src="icones/PRODUTIVIDADE.png">Produtividade</div>
-        <div class="area-item" data-area="Rádio"><img src="icones/RADIO E TV.png">Rádio e TV</div>
-        <div class="area-item" data-area="Jogos"><img src="icones/JOGOS DIGITAIS.png">Jogos Digitais</div>
+        <div class="area-item lado1" data-area="Telecomunicações"><img src="icones/TELECOM.png">Telecomunicações</div>
+        <div class="area-item lado2" data-area="Empreendedorismo"><img src="icones/EMPREENDORISMO.png">Empreendedorismo</div>
+        <div class="area-item lado2" data-area="Produtividade"><img src="icones/PRODUTIVIDADE.png">Produtividade</div>
+        <div class="area-item lado4" data-area="Rádio"><img src="icones/RADIO E TV.png">Rádio e TV</div>
+        <div class="area-item lado3" data-area="Jogos"><img src="icones/JOGOS DIGITAIS.png">Jogos Digitais</div>
     </section>
 
     <section class="search-filter">
@@ -84,22 +110,24 @@
         $(".result-card").html("")
         $.each(areasTela,function(index,value){
             var component = `
-            <div class="card">
-                <div>
-                    <div class="card-header">
-                        <div class="card-title">${value.software}</div>
-                        <div class="heart">♡</div>
-                    </div>
-                    <div class="card-description">
-                        ${value.descricao}
-                    </div>
-                    <div class="tags">
-                        <div class="tag">${area}</div>
-                        <div class="tag">${value.pagamento}</div>
-                        <div class="tag">${value.nivel}</div>
+            <a href="${value.link}" target="_blank">
+                <div class="card">
+                    <div>
+                        <div class="card-header">
+                            <div class="card-title">${value.software}</div>
+                            <div class="heart">♡</div>
+                        </div>
+                        <div class="card-description">
+                            ${value.descricao}
+                        </div>
+                        <div class="tags">
+                            <div class="tag">${area}</div>
+                            <div class="tag">${value.pagamento}</div>
+                            <div class="tag">${value.nivel}</div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
             `;
             
             $(".result-card").append(component)
@@ -117,22 +145,24 @@
         $(".result-card").html("")
         $.each(resultadoBusca,function(index,value){
             var componentBusca = `
-            <div class="card">
-                <div>
-                    <div class="card-header">
-                        <div class="card-title">${value.software}</div>
-                        <div class="heart">♡</div>
-                    </div>
-                    <div class="card-description">
-                        ${value.descricao}
-                    </div>
-                    <div class="tags">
-  
-                        <div class="tag">${value.pagamento}</div>
-                        <div class="tag">${value.nivel}</div>
+            <a href="${value.link}" target="_blank">
+                <div class="card">
+                    <div>
+                        <div class="card-header">
+                            <div class="card-title">${value.software}</div>
+                            <div class="heart">♡</div>
+                        </div>
+                        <div class="card-description">
+                            ${value.descricao}
+                        </div>
+                        <div class="tags">
+    
+                            <div class="tag">${value.pagamento}</div>
+                            <div class="tag">${value.nivel}</div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
             `;
 
             $(".result-card").append(componentBusca)

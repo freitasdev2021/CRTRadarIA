@@ -1,0 +1,37 @@
+ .navSuperior {
+     background: #03367b;
+     width: 100%;
+     height: auto;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     padding: 0 20px;
+     box-sizing: border-box;
+     margin-right:20px;
+}
+ .navSuperior ul {
+     list-style: none;
+     display: flex;
+     gap: 15px;
+     align-items: center;
+     margin: 0 40px;
+     padding: 0;
+}
+ .navSuperior ul li {
+     margin: 0;
+}
+ .navSuperior ul li a {
+     color: white;
+     text-decoration: none;
+}
+ .arrasta{
+     margin-right:60px;
+}
+ .navGeral{
+     display:flex;
+     flex-direction:column;
+     justify-content:center;
+}
+ .navGeral nav{
+     padding:10px 50px;
+}
