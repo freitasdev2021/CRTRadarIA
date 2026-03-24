@@ -65,19 +65,19 @@
     </section>
 
     <section class="areas">
-        <div class="area-item" data-area="Civil"><img src="icones/CIVIL.png">Civil</div>
-        <div class="area-item" data-area="Elétrica"><img src="icones/ELÉTRICA.png">Elétrica</div>
-        <div class="area-item" data-area="Mecânica"><img src="icones/MECÂNICA.png">Mecânica</div>
-        <div class="area-item" data-area="Metalurgia"><img src="icones/METALURGIA.png">Metalurgia</div>
-        <div class="area-item" data-area="Geologia"><img src="icones/GEOLOGIA.png">Geologia</div>
-        <div class="area-item" data-area="Agrimensura"><img src="icones/AGRIMENSURA.png">Agrimensura</div>
-        <div class="area-item" data-area="Arquitetura"><img src="icones/ARQUITETURA.png">Arquitetura</div>
-        <div class="area-item" data-area="Tecnologia"><img src="icones/TECNOLOGIA.png">Tecnologia</div>
-        <div class="area-item lado1" data-area="Telecomunicações"><img src="icones/TELECOM.png">Telecomunicações</div>
-        <div class="area-item lado2" data-area="Empreendedorismo"><img src="icones/EMPREENDORISMO.png">Empreendedorismo</div>
-        <div class="area-item lado2" data-area="Produtividade"><img src="icones/PRODUTIVIDADE.png">Produtividade</div>
-        <div class="area-item lado4" data-area="Rádio"><img src="icones/RADIO E TV.png">Rádio e TV</div>
-        <div class="area-item lado3" data-area="Jogos"><img src="icones/JOGOS DIGITAIS.png">Jogos Digitais</div>
+        <div class="area-item" data-area="Civil"><img src="icones/CIVIL.png" data-out="icones/CIVIL.png" data-in="icones/hover/CIVIL.png">Civil</div>
+        <div class="area-item" data-area="Elétrica"><img src="icones/ELÉTRICA.png" data-out="icones/ELÉTRICA.png" data-in="icones/hover/ELÉTRICA.png">Elétrica</div>
+        <div class="area-item" data-area="Mecânica"><img src="icones/MECÂNICA.png" data-out="icones/MECÂNICA.png" data-in="icones/hover/MECÂNICA.png">Mecânica</div>
+        <div class="area-item" data-area="Metalurgia"><img src="icones/METALURGIA.png" data-out="icones/METALURGIA.png" data-in="icones/hover/METALURGIA.png">Metalurgia</div>
+        <div class="area-item" data-area="Geologia"><img src="icones/GEOLOGIA.png" data-out="icones/GEOLOGIA.png" data-in="icones/hover/GEOLOGIA.png">Geologia</div>
+        <div class="area-item" data-area="Agrimensura"><img src="icones/AGRIMENSURA.png" data-out="icones/AGRIMENSURA.png" data-in="icones/hover/AGRIMENSURA.png">Agrimensura</div>
+        <div class="area-item" data-area="Arquitetura"><img src="icones/ARQUITETURA.png" data-out="icones/ARQUITETURA.png" data-in="icones/hover/ARQUITETURA.png">Arquitetura</div>
+        <div class="area-item" data-area="Tecnologia"><img src="icones/TECNOLOGIA.png" data-out="icones/TECNOLOGIA.png" data-in="icones/hover/TECNOLOGIA.png">Tecnologia</div>
+        <div class="area-item lado1" data-area="Telecomunicações"><img src="icones/TELECOM.png" data-out="icones/TELECOM.png" data-in="icones/hover/TELECOM.png">Telecomunicações</div>
+        <div class="area-item lado2" data-area="Empreendedorismo"><img src="icones/EMPREENDORISMO.png" data-out="icones/EMPREENDORISMO.png" data-in="icones/hover/EMPREENDORISMO.png">Empreendedorismo</div>
+        <div class="area-item lado2" data-area="Produtividade"><img src="icones/PRODUTIVIDADE.png" data-out="icones/PRODUTIVIDADE.png" data-in="icones/hover/PRODUTIVIDADE.png">Produtividade</div>
+        <div class="area-item lado4" data-area="Rádio"><img src="icones/RADIO E TV.png" data-out="icones/RADIO E TV.png" data-in="icones/hover/RADIO E TV.png">Rádio e TV</div>
+        <div class="area-item lado3" data-area="Jogos"><img src="icones/JOGOS DIGITAIS.png" data-out="icones/JOGOS DIGITAIS.png" data-in="icones/hover/JOGOS DIGITAIS.png">Jogos Digitais</div>
     </section>
 
     <section class="search-filter">
@@ -136,6 +136,17 @@
             
         })
     })
+
+    $(".areas img").hover(
+         function() {
+            // Quando o mouse passar sobre a imagem
+            $(this).attr("src", $(this).attr("data-in"));
+         },
+         function() {
+            // Quando o mouse sair da imagem
+            $(this).attr("src", $(this).attr("data-out"));
+         }
+   );
 
     $("input[name=Filtro]").on("keyup",function(){
         var busca = $(this).val().toLowerCase()
